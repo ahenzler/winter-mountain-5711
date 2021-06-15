@@ -6,6 +6,6 @@ class Hospital < ApplicationRecord
     doctors.distinct.count
   end
   def university_list
-    doctors.pluck(:university)
+    doctors.select(:university).group(:university).pluck(:university)
   end
 end

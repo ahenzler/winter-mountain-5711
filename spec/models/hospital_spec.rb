@@ -28,6 +28,6 @@ RSpec.describe Hospital do
   end
 
   it 'has unique doctor - university list' do
-    expect(@hospital1.university_list).to eq([@doctor1.university, @doctor2.university, @doctor3.university])
+    expect(@hospital1.university_list).to match_array([@doctor1.university, @doctor2.university])
   end
 end
