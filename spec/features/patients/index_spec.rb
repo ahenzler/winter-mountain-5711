@@ -28,6 +28,8 @@ RSpec.describe 'index' do
       expect(page).to have_content(@patient1.name)
       expect(page).to have_content(@patient2.name)
       expect(page).to have_content(@patient3.name)
+      expect(@patient3.name).to appear_before(@patient2.name)
+      expect(@patient2.name).to appear_before(@patient1.name)
     end
   end
 end
