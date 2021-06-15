@@ -1,6 +1,6 @@
 <h1><%= @hospital.name  %></h1>
 <br>
-<h2>Doctors On Staff Count: <%=  @doc_count  %></h2>
+<h2>Doctors On Staff: <%=  @doc_count  %></h2>
 <h2>Our Doctors Attended: <%  @universities.uniq.each do |uni|  %></h2>
   <ul> - <%= uni %></ul>
 <% end %>

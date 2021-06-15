@@ -24,10 +24,13 @@ RSpec.describe 'show' do
   describe 'hospital information' do
     it 'has doctor count hospital' do
 
+      expect(page).to have_content('Doctors On Staff')
       expect(page).to have_content(3)
     end
 
     it 'has unique doctor - university list' do
+
+      expect(page).to have_content('Our Doctors Attended')
       expect(page).to have_content(@doctor1.university)
       expect(page).to have_content(@doctor2.university)
     end
