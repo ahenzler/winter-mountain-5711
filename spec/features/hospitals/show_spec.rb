@@ -1,10 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Hospital do
-  describe 'relationships' do
-    it { should have_many(:doctors) }
-  end
-
+RSpec.describe 'show' do
   before :each do
     @hospital1 = Hospital.create!(name: "Grey Sloan Memorial Hospital")
 
@@ -21,13 +17,19 @@ RSpec.describe Hospital do
     DoctorPatient.create(doctor_id: @doctor2.id, patient_id: @patient2.id)
     DoctorPatient.create(doctor_id: @doctor3.id, patient_id: @patient2.id)
     DoctorPatient.create(doctor_id: @doctor3.id, patient_id: @patient3.id)
+
+          visit "hospitals/#{@hospital1.id}"
   end
 
-  it 'has doctor count' do
-    expect(@hospital1.doctor_count).to eq(3)
-  end
+  describe 'hospital information' do
+    it 'has doctor count hospital' do
 
-  it 'has unique doctor - university list' do
-    expect(@hospital1.unique_university_list).to eq([@doctor1.university, @doctor2.university])
+      expect(page).to have_content(3)
+    end
+
+    it 'has unique doctor - university list' do
+      expect(page).to have_content(@doctor1.university)
+      expect(page).to have_content(@doctor2.university)
+    end
   end
 end
